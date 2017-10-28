@@ -1,0 +1,35 @@
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Features -->
+  <h1>Bus Routes Details</h1>
+  <div class="row text-center">
+    <div class="pull-left col-lg-3 col-md-3 operator-drop">
+      <select name="operatoritems" [(ngModel)]="operator" *ngIf="this.operatorList" (change)="initRoutesInfo()">
+        <option value="">All</option>
+        <option *ngFor="let operator of operatorList" [value]="operator.operatorreference">{{ operator.operatorname}}</option>
+      </select>
+    </div>
+    <div class="col-lg-12 col-md-12 mt-1">
+      <div class="container" *ngIf="routesList.length > 0">   
+        <table class="table">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Operator</th>
+            <th class="text-center">Route</th>
+            <th class="text-center">Route Details</th>
+          </tr>
+          <tr *ngFor="let route of routesList; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{route.operator}}</td>
+            <td>{{route.route}}</td>
+            <td><button>Show Route Details</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="container" *ngIf="errorRoute">
+        <p class="route-error">{{ errorRoute }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

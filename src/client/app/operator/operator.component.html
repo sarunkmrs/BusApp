@@ -1,0 +1,17 @@
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Features -->
+  <h1>Operator</h1>
+
+  <div class="row text-center">
+    <div class="col-lg-4 col-md-4" *ngFor="let operator of operatorList">
+      <div class="card">
+        <div class="card-body">
+          <img src="/assets/images/{{ operator.operatorreference}}.jpg">
+        </div>
+        <div class="card-footer">
+          <h4 class="card-title">{{ operator.operatorname }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>

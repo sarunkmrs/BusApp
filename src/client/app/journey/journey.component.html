@@ -1,0 +1,48 @@
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Features -->
+  <h1>Bus Journey Details</h1>
+  <div class="row text-center">
+    <div class="col-lg-3 col-md-3 mb-4">
+      <form name="journeyForm">
+        <input list="stopShortNameList" name="StopShortName" [(ngModel)]="stopName">
+        <datalist id="stopShortNameList">
+          <option *ngFor="let stopShortName of stopShortNameList"> {{stopShortName}}</option>
+        </datalist>
+        <input type="submit" (click)="getStopList();">
+      </form>
+    </div>
+    <div class="col-md-12">
+      <!-- <ng2-map center="Brampton, Canada"></ng2-map> -->
+
+    </div>
+    <div class="col-lg-12 col-md-12 mt-1">
+      <div class="container" *ngIf="listOfSubStops.length > 0">
+        <table class="table">
+          <tr>
+            <th class="text-center">#</th>
+            <th class="text-center">Short Name</th>
+            <th class="text-center">Short Name Localized</th>
+            <th class="text-center">Stop Id</th>
+            <th class="text-center">Latitude</th>
+            <th class="text-center">Longitude</th>
+            <th class="text-center">Operators</th>
+            <th class="text-center">Action</th>
+          </tr>
+          <tr *ngFor="let subStop of listOfSubStops; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{subStop.shortname}}</td>
+            <td>{{subStop.shortnamelocalized}}</td>
+            <td>{{subStop.stopid}}</td>
+            <td>{{subStop.latitude}}</td>
+            <td>{{subStop.longitude}}</td>
+            <td>{{ 'operator' }}</td>
+            <td><button>Show On Map</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="container" *ngIf="errorSublist">
+        <p class="error">{{ errorSublist }}</p>
+      </div>
+    </div>
+  </div>
